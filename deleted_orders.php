@@ -29,7 +29,7 @@ $pageTitle = 'Pedidos Eliminados';
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Halcón — Pedidos Eliminados</title>
-<link rel="stylesheet" href="assets/admin.css">
+<link rel="stylesheet" href="admin.css">
 </head>
 <body>
 <?php include 'sidebar.php'; ?>

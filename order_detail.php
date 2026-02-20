@@ -124,12 +124,12 @@ $pageTitle = 'Pedido #' . $order['invoice_num'];
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Halcón — Pedido #<?= htmlspecialchars($order['invoice_num']) ?></title>
-<link rel="stylesheet" href="assets/admin.css">
+<link rel="stylesheet" href="admin.css">
 </head>
 <body>
-<?php include 'partials/sidebar.php'; ?>
+<?php include 'sidebar.php'; ?>
 <div class="main-content">
-  <?php include 'partials/topbar.php'; ?>
+  <?php include 'topbar.php'; ?>
   <div class="page-body">
 
     <div class="page-header">
