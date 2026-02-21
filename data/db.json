@@ -1,0 +1,24 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "admin",
+            "password": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+            "name": "Administrador",
+            "role": "admin",
+            "active": true
+        }
+    ],
+    "orders": [
+        {
+            "id": 1,
+            "invoice_number": 1001,
+            "customer_number": 5001,
+            "status": "Delivered",
+            "delivery_photo": null,
+            "is_deleted": false
+        }
+    ],
+    "next_invoice": 1001,
+    "next_customer": 5001
+}

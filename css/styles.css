@@ -1,4 +1,4 @@
-
+﻿
 /* 
 =================================================
 .CSS QUE CONTROLA EL DISEÑO DE LA APLICACIÓN WEB.
@@ -97,4 +97,199 @@ body
     text-align: left;
     justify-content: center;
     font-size: 21px;
+}
+
+form
+{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs-row
+{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 700px;
+}
+
+input[type="number"]
+{
+    background-color: #252525;
+    color: white;
+    border-radius: 6px;
+    padding: 9px;
+    border-color: rgb(109, 109, 109);
+    font-weight: bold;
+    border-style: solid;
+    font-family: "Asap Condensed", sans-serif;
+    font-weight: 800;
+    font-size: 19px;
+    margin-top: 20px;
+    
+}
+
+input[type="number"]:focus {
+    border-color: #e6c846;
+    box-shadow: 0 0 0 3px rgba(230, 200, 70, 0.25);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+button[type="submit"]
+{
+    background-color: #e6c846;
+    color: black;
+    border-radius: 6px;
+    padding: 9px;
+    border-color: rgb(109, 109, 109);
+    font-weight: bold;
+    border-style: solid;
+    cursor: pointer;
+    font-family: "Asap Condensed", sans-serif;
+    font-weight: 800;
+    font-size: 19px;
+    margin-top: 20px;
+    width: 700px;
+}
+
+
+.field {
+    position: relative;
+    width: min(42vw, 340px);
+    min-width: 260px;
+}
+
+
+.floating-field input[type="number"]
+{
+    width: 100%;
+    margin-top: 0;
+    padding: 18px 12px 8px 12px;
+}
+
+.floating-label
+{
+    position: absolute;
+    left: 12px;
+    top: 13px;
+    font-family: "Asap Condensed", sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    color: #9b9b9b;
+    background-color: #252525;
+    padding: 0 4px;
+    pointer-events: none;
+    transition: all 0.15s ease;
+}
+
+.floating-field input[type="number"]:focus + .floating-label,
+.floating-field input[type="number"]:not(:placeholder-shown) + .floating-label
+{
+    top: -9px;
+    font-size: 13px;
+    color: #e6c846;
+}
+
+
+#result
+{
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    padding: 0 16px 28px 16px;
+}
+
+.status-card
+{
+    width: min(700px, 92vw);
+    background-color: #1d1d1d;
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
+    padding: 18px;
+    font-family: "Asap Condensed", sans-serif;
+}
+
+.status-title
+{
+    margin: 0 0 10px 0;
+    color: #d9d9d9;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.status-badge
+{
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 18px;
+    border: 1px solid transparent;
+}
+
+.badge-ordered
+{
+    color: #f6d365;
+    background-color: rgba(246, 211, 101, 0.12);
+    border-color: rgba(246, 211, 101, 0.45);
+}
+
+.badge-in-process
+{
+    color: #67d5ff;
+    background-color: rgba(103, 213, 255, 0.12);
+    border-color: rgba(103, 213, 255, 0.45);
+}
+
+.badge-in-route
+{
+    color: #ffb067;
+    background-color: rgba(255, 176, 103, 0.12);
+    border-color: rgba(255, 176, 103, 0.45);
+}
+
+.badge-delivered
+{
+    color: #75e89a;
+    background-color: rgba(117, 232, 154, 0.12);
+    border-color: rgba(117, 232, 154, 0.45);
+}
+
+.badge-default
+{
+    color: #d4d4d4;
+    background-color: rgba(212, 212, 212, 0.1);
+    border-color: rgba(212, 212, 212, 0.4);
+}
+
+.result-message
+{
+    margin: 0;
+    color: #e0e0e0;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.result-error
+{
+    color: #ff9e9e;
+}
+
+.status-photo
+{
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    margin-top: 14px;
+    border-radius: 8px;
+    border: 1px solid #4b4b4b;
 }
