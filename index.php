@@ -31,7 +31,8 @@ if(file_exists($jsonData) == false)    {
 <body>
 <header>
     <h2 id="header-title">🦅 Halcon Order Hub</h2>
-    <button id="login-button">Acceso de Personal</button>
+    <button id="login-button" onclick="window.location.href='login.php'">Acceso de Personal</button>
+    
 </header>
     <div id="estado-title">
         <h1 id="estado-t1">ESTADO DE</h1>
@@ -55,8 +56,26 @@ if(file_exists($jsonData) == false)    {
 
     <div id="result"></div>
 
+    <!-- Modal de login -->
+    <div id="login-modal" class="modal-overlay" style="display:none;">
+        <div class="modal-box">
+            <button id="modal-close">✕</button>
+            <h2 class="modal-title">Acceso de Personal</h2>
+            <form id="login-form">
+                <div class="field floating-field">
+                    <input type="text" id="login-username" name="username" placeholder=" " required autocomplete="username">
+                    <label for="login-username" class="floating-label">Usuario</label>
+                </div>
+                <div class="field floating-field">
+                    <input type="password" id="login-password" name="password" placeholder=" " required autocomplete="current-password">
+                    <label for="login-password" class="floating-label">Contraseña</label>
+                </div>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <div id="login-result"></div>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
 </body>
 </html>
-
-

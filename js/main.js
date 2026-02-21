@@ -62,3 +62,64 @@ form?.addEventListener('submit', async (e) => {
     result.innerHTML = '<div class="status-card"><p class="result-message result-error">No se pudo consultar el pedido. Intenta de nuevo.</p></div>';
   }
 });
+
+// ================================================================
+// LÓGICA DEL MODAL DE LOGIN
+// ================================================================
+
+const loginButton = document.getElementById('login-button');
+const loginModal = document.getElementById('login-modal');
+const modalClose = document.getElementById('modal-close');
+const loginForm = document.getElementById('login-form');
+const loginResult = document.getElementById('login-result');
+
+// Abrir modal.
+loginButton?.addEventListener('click', () => {
+  loginModal.style.display = 'flex';
+});
+
+// Cerrar modal con el botón ✕.
+modalClose?.addEventListener('click', () => {
+  loginModal.style.display = 'none';
+  loginResult.innerHTML = '';
+  loginForm.reset();
+});
+
+// Cerrar modal al hacer click fuera del box.
+loginModal?.addEventListener('click', (e) => {
+  if (e.target === loginModal) {
+    loginModal.style.display = 'none';
+    loginResult.innerHTML = '';
+    loginForm.reset();
+  }
+});
+
+loginForm?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const username = document.getElementById('login-username').value.trim();
+  const password = document.getElementById('login-password').value;
+
+  loginResult.innerHTML = '<div class="status-card"><p class="result-message">Verificando credenciales...</p></div>';
+
+  try {
+    const res = await fetch('api/auth_login.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    });
+
+    const data = await res.json();
+
+    if (!data.ok) {
+      loginResult.innerHTML = `<div class="status-card"><p class="result-message result-error">${data.message}</p></div>`;
+      return;
+    }
+
+    // Si login exitoso, enviar a la pagina principal del dashboard.
+    window.location.href = 'dashboard.php';
+
+  } catch (error) {
+    loginResult.innerHTML = '<div class="status-card"><p class="result-message result-error">No se pudo conectar. Intenta de nuevo.</p></div>';
+  }
+});
