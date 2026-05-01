@@ -20,7 +20,7 @@ form?.addEventListener('submit', async (e) => {
 
   try {
     // Envia los datos del formulario al endpoint público.
-    const res = await fetch('api/public_lookup.php', {
+    const res = await fetch('/track', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -103,7 +103,7 @@ loginForm?.addEventListener('submit', async (e) => {
   loginResult.innerHTML = '<div class="status-card"><p class="result-message">Verificando credenciales...</p></div>';
 
   try {
-    const res = await fetch('api/auth_login.php', {
+    const res = await fetch('/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password })
@@ -117,7 +117,7 @@ loginForm?.addEventListener('submit', async (e) => {
     }
 
     // Si login exitoso, enviar a la pagina principal del dashboard.
-    window.location.href = 'dashboard.php';
+    window.location.href = '/dashboard';
 
   } catch (error) {
     loginResult.innerHTML = '<div class="status-card"><p class="result-message result-error">No se pudo conectar. Intenta de nuevo.</p></div>';

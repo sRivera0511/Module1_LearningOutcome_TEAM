@@ -555,6 +555,41 @@ input[type="number"]::-webkit-inner-spin-button {
     font-size: 1.1rem;
 }
 
+.evidence-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 16px 0;
+}
+
+.evidence-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.evidence-label {
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.evidence-thumbnail {
+    max-width: 300px;
+    max-height: 300px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--panel-border);
+    object-fit: cover;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.evidence-thumbnail:hover {
+    transform: scale(1.02);
+    border-color: var(--blue);
+}
+
 @media (max-width: 900px) {
     .form-grid,
     .inputs-row,

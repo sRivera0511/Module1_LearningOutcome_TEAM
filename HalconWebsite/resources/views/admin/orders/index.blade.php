@@ -133,13 +133,43 @@
                                 </div>
                             </dl>
 
-                            @if($order->route_photo || $order->delivery_photo)
-                                <div class="photo-links">
-                                    @if($order->route_photo)
-                                        <a href="{{ asset('storage/' . $order->route_photo) }}" target="_blank" rel="noreferrer">Ver evidencia de ruta</a>
+                            @if(in_array($order->status, \App\Models\Order::evidenceStatuses()))
+                                <div class="evidence-gallery">
+                                    @if($order->route_photo && $order->status === \App\Models\Order::STATUS_EN_RUTA)
+                                        <div class="evidence-item">
+                                            <p class="evidence-label">Evidencia de ruta</p>
+                                            <img
+                                                src="{{ asset('storage/' . $order->route_photo) }}"
+                                                alt="Evidencia de ruta"
+                                                class="evidence-thumbnail"
+                                                onclick="window.open(this.src, '_blank')"
+                                                style="cursor: pointer;"
+                                            >
+                                        </div>
+                                    @elseif($order->delivery_photo && $order->status === \App\Models\Order::STATUS_ENTREGADO)
+                                        <div class="evidence-item">
+                                            <p class="evidence-label">Evidencia de entrega</p>
+                                            <img
+                                                src="{{ asset('storage/' . $order->delivery_photo) }}"
+                                                alt="Evidencia de entrega"
+                                                class="evidence-thumbnail"
+                                                onclick="window.open(this.src, '_blank')"
+                                                style="cursor: pointer;"
+                                            >
+                                        </div>
                                     @endif
-                                    @if($order->delivery_photo)
-                                        <a href="{{ asset('storage/' . $order->delivery_photo) }}" target="_blank" rel="noreferrer">Ver evidencia de entrega</a>
+
+                                    @if($order->route_photo && $order->delivery_photo)
+                                        <div class="evidence-item">
+                                            <p class="evidence-label">Evidencia de entrega</p>
+                                            <img
+                                                src="{{ asset('storage/' . $order->delivery_photo) }}"
+                                                alt="Evidencia de entrega"
+                                                class="evidence-thumbnail"
+                                                onclick="window.open(this.src, '_blank')"
+                                                style="cursor: pointer;"
+                                            >
+                                        </div>
                                     @endif
                                 </div>
                             @endif
