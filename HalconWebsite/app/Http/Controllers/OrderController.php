@@ -9,9 +9,27 @@ use Illuminate\Validation\ValidationException;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::with('user')->latest()->get();
+        $query = Order::with('user');
+
+        if ($search = $request->input('search')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('invoice_number', $search)
+                  ->orWhere('customer_number', $search)
+                  ->orWhere('customer_name', 'like', "%{$search}%");
+            });
+        }
+
+        if ($status = $request->input('status')) {
+            $query->where('status', $status);
+        }
+
+        if ($date = $request->input('date')) {
+            $query->whereDate('created_at', $date);
+        }
+
+        $orders = $query->latest()->get();
 
         return view('admin.orders.index', compact('orders'));
     }

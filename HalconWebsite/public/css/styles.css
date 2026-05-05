@@ -590,10 +590,47 @@ input[type="number"]::-webkit-inner-spin-button {
     border-color: var(--blue);
 }
 
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+input[type="date"] {
+    width: 100%;
+    border: 1px solid #565656;
+    border-radius: 12px;
+    background: var(--panel-soft);
+    color: var(--text);
+    padding: 14px 14px 12px;
+    font: inherit;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+input[type="date"]:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(230, 200, 70, 0.2);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
 @media (max-width: 900px) {
     .form-grid,
     .inputs-row,
-    .meta-list {
+    .meta-list,
+    .filter-grid {
         grid-template-columns: 1fr;
     }
 
@@ -613,3 +650,4 @@ input[type="number"]::-webkit-inner-spin-button {
         align-items: flex-start;
     }
 }
+

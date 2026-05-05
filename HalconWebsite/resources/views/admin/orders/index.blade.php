@@ -38,6 +38,46 @@
             </div>
         @endif
 
+        <section class="form-card">
+            <div class="section-heading">
+                <div>
+                    <p class="record-kicker">Busqueda</p>
+                    <h2>Filtrar pedidos</h2>
+                </div>
+            </div>
+
+            <form action="{{ route('orders.index') }}" method="GET" class="stack-form">
+                <div class="filter-grid">
+                    <div class="field">
+                        <label for="search" class="field-label">Factura, cliente o nombre</label>
+                        <input type="text" id="search" name="search" value="{{ request('search') }}" placeholder="Ej. 1001, Juan...">
+                    </div>
+
+                    <div class="field">
+                        <label for="filter-status" class="field-label">Estado</label>
+                        <select id="filter-status" name="status" class="form-select">
+                            <option value="">Todos</option>
+                            @foreach(\App\Models\Order::STATUSES as $status)
+                                <option value="{{ $status }}" @selected(request('status') === $status)>{{ $status }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="filter-date" class="field-label">Fecha de creacion</label>
+                        <input type="date" id="filter-date" name="date" value="{{ request('date') }}">
+                    </div>
+                </div>
+
+                <div class="filter-actions">
+                    <button type="submit" class="button button-primary">Buscar</button>
+                    @if(request()->hasAny(['search', 'status', 'date']))
+                        <a href="{{ route('orders.index') }}" class="button button-secondary">Limpiar filtros</a>
+                    @endif
+                </div>
+            </form>
+        </section>
+
         @if($canCreate)
             <section class="form-card">
                 <div class="section-heading">
